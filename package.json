@@ -26,12 +26,18 @@
     "clean:dev:network": "docker network rm onizukanet",
     "build:docker": "docker build --cache-from $npm_package_config_imageRepoDev -t $npm_package_config_imageRepoDev -t $npm_package_config_imageRepoDev:$npm_package_version -f ./Dockerfile --build-arg APP_NAME=$npm_package_name .",
     "start:dev:docker": "docker-compose -p bom -f docker-compose.yml up -d",
-    "stop:dev:docker": "docker-compose -p bom -f docker-compose.yml stop"
+    "stop:dev:docker": "docker-compose -p bom -f docker-compose.yml stop",
+    "restart:dev:docker": "docker-compose -p bom -f docker-compose.yml restart"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
+    "@nestjs/config": "^0.5.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/platform-fastify": "^7.4.4",
+    "class-transformer": "^0.3.1",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4"

@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  onizuka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: docker.pkg.github.com/lcse/onizuka/onizuka
+    container_name: onizuka
+    restart: always
+    tty: true
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    working_dir: /opt/${APP_NAME}
+    volumes:
+      - .:/opt/${APP_NAME}:rw
+      - /opt/${APP_NAME}/node_modules
+    entrypoint: /bin/sh
+    # command: ["yarn", "start:dev"]
+    command: -c "yarn --frozen-lockfile --ignore-optional --no-progress --silent --force && yarn start:dev"
+    networks:
+      - onizukanet
+networks:
+  onizukanet:
+    external: true
