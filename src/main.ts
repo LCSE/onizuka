@@ -14,11 +14,11 @@ async function bootstrap() {
   );
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(app_port, '0.0.0.0');
-  // console.log(
-  //   '\x1b[33m',
-  //   'Application is running on: ' + '\x1b[35m',
-  //   `${await app.getUrl()}`,
-  //   '\x1b[0m',
-  // );
+  console.log(
+    '\x1b[33m',
+    'Application is running on: ' + '\x1b[35m',
+    `${await app.getUrl()}`,
+    '\x1b[0m',
+  );
 }
 bootstrap();
