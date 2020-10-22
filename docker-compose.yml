@@ -18,12 +18,14 @@ services:
     working_dir: /opt/${APP_NAME}
     volumes:
       - .:/opt/${APP_NAME}:rw
-      - /opt/${APP_NAME}/node_modules
+      - node_modules:/opt/${APP_NAME}/node_modules
     entrypoint: /bin/sh
     # command: ["yarn", "start:dev"]
     command: -c "yarn --frozen-lockfile --ignore-optional --no-progress --silent --force && yarn start:dev"
     networks:
       - onizukanet
+volumes:
+  node_modules:
 networks:
   onizukanet:
     external: true
